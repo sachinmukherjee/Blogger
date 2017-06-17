@@ -9,9 +9,12 @@ class Login(models.Model):
     email = models.EmailField(max_length=50)
     password = models.CharField(max_length=20)
 
+    def __str__(self):
+        return "%s %s" % (self.email, self.password)
+
 
 class Users(models.Model):
-    fullname = models.CharField(max_length=50)
+    fullname = models.CharField(max_length=50,primary_key=True)
     description = models.CharField(max_length=50)
     state = models.CharField(max_length=20)
     city = models.CharField(max_length=20)
@@ -23,7 +26,7 @@ class Users(models.Model):
 
 
 class Blogs(models.Model):
-    title = models.CharField(max_length=40,primary_key=True)
+    title = models.CharField(max_length=40, primary_key=True)
     content = models.TextField()
     date = models.DateField("Date", default=date.today)
     user_name = models.ForeignKey(Users)
