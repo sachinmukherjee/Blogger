@@ -29,8 +29,8 @@ class User(models.Model):
 class Blogs(models.Model):
     title = models.CharField(max_length=100, primary_key=True)
     content = models.TextField()
-    date = models.DateField("DATE", default=datetime.date())
+    date = models.DateField("DATE", default=datetime.date.today)
     username = models.ForeignKey(User)
 
     def __str__(self):
-        return "%s %s %s %s " % (self.title, self.content, self.date, self.username)
+        return " %s%s %s %s %s " % (self.id, self.title, self.content, self.date, self.username.fullname)
