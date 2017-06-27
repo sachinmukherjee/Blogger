@@ -1,12 +1,16 @@
 <html>
 <head>
-    <title>Blogger</title>
+  <title>Blogger</title>
 </head>
 
 <body>
-{%for all in blogs%}
-   {{all.title}}
-   {{all.content}}
-{%endfor%}
+<div class="home">
+  {% for all in blogs %}
+    <a href="/home/{{all.id}}/">{{all.title}}</a>
+    <p>{{all.content}}</p>
+    <p>Publish Date: {{all.date}}</p>
+    <p>Published by: {{all.username.fullname}}</p>
+  {% endfor %}
+</div>
 </body>
 </html>
