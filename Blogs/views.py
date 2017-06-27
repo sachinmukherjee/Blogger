@@ -14,16 +14,18 @@ def home(request):
     return render_to_response('home.html', {'blogs': blog})
 
 
-@csrf_exempt
+
 def login(request):
-    request.method == 'POST'
+	return render_to_response('login.html')
+
+@csrf_exempt
+def loginValidation(request):
     email = request.POST.get('email')
     log = Login.objects.filter(email=email).first()
     if log:
         return HttpResponseRedirect("/home/")
     else:
-        return HttpResponseRedirect('/register/')
-
+        return HttpResponseRedirect('register.html')   
 
 def register(request):
     if request.POST.get('submit'):
