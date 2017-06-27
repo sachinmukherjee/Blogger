@@ -28,7 +28,7 @@ class User(models.Model):
 
 class Blogs(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = models.TextField(max_length=10000)
     date = models.DateField("DATE", default=datetime.date.today)
     username = models.ForeignKey(User)
 

@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Blogger</title>
 </head>
-<div>
-<h2 style="text-align:center;">Welcome to Blogger</h2>
-<div class="content" style="text-align:center;">
-{%for all in results%}
-    <ul style="list-style-type:none;">
-        <li><a href="{all.id}}">{{all.title}}</a></li>
-        <li>{{all.content}}</li>
-    </ul>
-    <p>Created by : {{all.username.fullname}}</p>
+
+<body>
+{%for all in blogs%}
+   {{all.title}}
+   {{all.content}}
 {%endfor%}
-</div>
 </body>
 </html>
