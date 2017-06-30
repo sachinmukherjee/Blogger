@@ -10,7 +10,7 @@ class Login(models.Model):
     password = models.TextField(max_length=20)
 
     def __str__(self):
-        return self.email
+        return "%s %s" % (self.id, self.email)
 
 
 class User(models.Model):
@@ -23,7 +23,7 @@ class User(models.Model):
     login_id = models.ForeignKey(Login)
 
     def __str__(self):
-        return "%s %s %s %s %s " % (self.fullname, self.city, self.country, self.country, self.login_id)
+        return "%s %s %s %s %s %s " % (self.id, self.fullname, self.city, self.country, self.country, self.login_id)
 
 
 class Blogs(models.Model):
