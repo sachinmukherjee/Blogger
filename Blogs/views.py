@@ -6,10 +6,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render_to_response
 from .models import Blogs, Login, User
 
+
 @csrf_exempt
 def home(request):
     blog = Blogs.objects.all().order_by('date')
     return render_to_response('home.html', {'blogs': blog})
+
 
 @csrf_exempt
 def login(request):
@@ -54,14 +56,17 @@ def addUser(request):
     else:
         return HttpResponseRedirect('/home/')
 
+
 @csrf_exempt
 def blogs(request, blogs_id):
     blog = Blogs.objects.get(pk=blogs_id)
     return render_to_response('individualblog.html', {'individual': blog})
 
+
 @csrf_exempt
 def details(request):
     return render_to_response('adduser.html')
+
 
 @csrf_exempt
 def detailProcessing(request):
@@ -91,7 +96,10 @@ def detailProcessing(request):
 
 
 def publish(request):
-    render_to_response('publish.html')
+    if request.session["blog_user"]:
+        return render_to_response('publish.html')
+    else:
+        return HttpResponseRedirect('/login/')
 
 
 def addContent(request):

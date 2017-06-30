@@ -34,3 +34,19 @@ class Blogs(models.Model):
 
     def __str__(self):
         return " %s %s %s %s " % (self.title, self.content, self.date, self.username.fullname)
+
+
+class Saved(models.Model):
+    blog_id = models.ForeignKey(Blogs)
+    user_id = models.ForeignKey(User)
+
+    def __str__(self):
+        return "%s %s" % (self.blog_id.id, self.user_id.id)
+
+
+class ReadLater(models.Model):
+    blog_id = models.ForeignKey(Blogs)
+    user_id = models.ForeignKey(User)
+
+    def __str__(self):
+        return "%s %s" % (self.blog_id.id, self.user_id.id)
