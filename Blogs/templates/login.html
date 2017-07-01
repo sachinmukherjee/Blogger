@@ -1,25 +1,27 @@
 <html>
 <head>
 <title>Login</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Blogs/login.css' %}">
 </head>
 
 
 <body>
+<div class="login">
 <h3>Login</h3>
 <form action="/login/authenticate/" method="post" { %csrf_token% }>
     <table>
         <tr>
-            <td><label for="email">Email</label></td>
-            <td><input type="email" name="email"></td>
+            <td><input type="email" name="email" placeholder="Email"></td>
         </tr>
 
         <tr>
-            <td><label for="password">Password</label></td>
-            <td><input type="password" name="password"></td>
+            <td><input type="password" name="password" placeholder="Password"></td>
         </tr>
     </table>
-<button type="submit" name="login" value="submit">Login</button>
+<button type="submit" name="login" value="submit">Let Me In</button>
 </form>
+</div>
 </body>
 </html>
 

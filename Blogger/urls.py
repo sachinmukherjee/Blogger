@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^details/add_details/', views.detailProcessing),
     url(r'^publish/$', views.publish),
     url(r'^publish/addContent/', views.addContent),
+    url(r'^logout/$', views.logout),
 
 
 

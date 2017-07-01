@@ -116,3 +116,8 @@ def addContent(request):
         return HttpResponseRedirect('/home/')
     else:
         return HttpResponseRedirect('/publish/')
+
+
+def logout(request):
+    del request.session["login_user"]
+    del request.session["blog_user"]
