@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Publish</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Blogs/publish.css' %}">
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=kd3z5dwgulql8kcw9jy9kntigyi68q9rw8rsnq237rbaosch"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
+<div class="publish">
 <h2>Enter Contents</h2>
 <form action="/publish/addContent/" method="get">
     <table>
         <tr>
-            <td><label>Title</label></td>
-            <td><input type="text" name="title"></td>
+            <td><input type="text" name="title" placeholder="Title"></td>
         </tr>
         <tr>
-            <td><label>Contents</label></td>
-            <td><input type="text" name="content"></td>
+            <td><textarea name="content" placeholder="Content"></textarea></td>
         </tr>
     </table>
     <button type="submit" name="submit">Publish</button>
 </form>
-
+</div>
 </body>
+
 </html>

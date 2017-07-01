@@ -1,0 +1,19 @@
+body
+{
+  background-color:lightblue;
+}
+input[type=text]
+{
+  position:relative;
+  width:12.4cm;
+  height:1.2cm;
+  font-weight:bolder;
+  font-size:0.5cm;
+  display:block;
+  margin-bottom:20px;
+}
+textarea
+{
+  height:5cm;
+  width:10cm;
+}

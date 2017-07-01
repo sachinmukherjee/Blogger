@@ -3,7 +3,7 @@ body
     background-color:lightblue;
 }
 
-.login
+.register
 {
   width:10cm;
   height:10cm;
@@ -13,6 +13,7 @@ body
   left:12cm;
   top:1cm;
 }
+
 
 input[type=email], input[type=password]
 {
@@ -24,10 +25,7 @@ input[type=email], input[type=password]
   display:block;
   margin-bottom:20px;
 }
-table, td
-{
-  line-height:1cm;
-}
+
 button[type=submit]
 {
  width:10cm;
@@ -37,10 +35,10 @@ button[type=submit]
  font-weight:bold;
  font-size:0.5cm;
 }
+
 h3
 {
   position:relative;
-  left:3.7cm;
+  left:2.3cm;
   font-size:1cm;
 }
-
