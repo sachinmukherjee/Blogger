@@ -1,0 +1,27 @@
+h3
+{
+  font-size:0.8cm;
+  font-weight:bold;
+}
+.content
+{
+  color:grey;
+  font-size:0.6cm;
+}
+.date
+{
+ color:grey;
+ font-size:0.3cm;
+}
+.author
+{
+  color:grey;
+  font-size:0.3cm;
+  font-weight:bold;
+}
+.individual
+{
+  position:relative;
+  margin:0.3cm;
+
+}

@@ -1,15 +1,16 @@
 <html>
 <head>
   <title>Blogger</title>
+  {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Blogs/home.css' %}">
 </head>
 
 <body>
 <div class="home">
   {% for all in blogs %}
     <a href="/home/{{all.id}}/">{{all.title}}</a>
-    <p>{{all.content}}</p>
+    <p class="content">{{all.content}}</p>
     <p>Publish Date: {{all.date}}</p>
-    <p>Published by: {{all.username.fullname}}</p>
   {% endfor %}
 </div>
 </body>

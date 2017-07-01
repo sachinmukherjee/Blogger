@@ -1,13 +1,17 @@
 <html>
 <head>
     <title>{{individual.title}}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Blogs/individual.css' %}">
 </head>
 
 <body>
+<div class="individual">
   <h3>{{individual.title}}</h3>
-  <p>{{individual.content}}</p>
-  <p>Date : {{individual.date}}</p>
-  <p>Created by: {{individual.username.fullname}} </p>
+  <p class="content">{{individual.content}}</p>
+  <p class="date">Date : {{individual.date}}</p>
+  <p class="author">Created by: {{individual.username.fullname}} </p>
+</div>
 </body>
 </html>
 

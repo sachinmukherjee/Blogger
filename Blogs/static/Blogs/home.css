@@ -1,0 +1,29 @@
+body
+{
+  background-color:white;
+}
+.home
+{
+ position:relative;
+ left:14cm;
+ margin:1cm;
+}
+a
+{
+  text-decoration:none;
+  font-weight:bolder;
+  color:black;
+  font-size:0.8cm;
+  width:10cm;
+
+}
+.content
+{
+   color:grey;
+  font-size:0.5cm;
+}
+p
+{
+ color:grey;
+ font-size:0.3cm;
+}

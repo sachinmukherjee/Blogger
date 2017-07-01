@@ -1,6 +1,6 @@
 body
 {
- background-color:brown;
+    background-color:lightblue;
 }
 
 .login
@@ -12,7 +12,6 @@ body
   padding:1cm;
   left:12cm;
   top:3.2cm;
-  background-color:white;
 }
 
 input[type=email], input[type=password]
