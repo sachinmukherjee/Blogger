@@ -143,3 +143,13 @@ def saved(request):
         return render_to_response("saved.html", {"Saved": save})
     else:
         return HttpResponseRedirect("/login/")
+
+def readlater(request):
+    if request.session["login_user"]:
+        user = request.session["login_user"]
+        log = Login.objects.get(pk=user)
+        usr = User.objects.get(login_id=log)
+        readlater = ReadLater.objects.get(user_id=usr)
+        return render_to_response("readlater.html", {"Read": readlater})
+    else:
+        return HttpResponseRedirect("/login/")

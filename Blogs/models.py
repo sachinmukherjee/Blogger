@@ -42,7 +42,7 @@ class Saved(models.Model):
     user_id = models.ForeignKey(User)
 
     def __str__(self):
-        return "%s %s" % (self.blog_id.id, self.user_id.id)
+        return "%s %s" % (self.blog_id, self.user_id)
 
 
 class ReadLater(models.Model):
@@ -50,4 +50,4 @@ class ReadLater(models.Model):
     user_id = models.ForeignKey(User)
 
     def __str__(self):
-        return "%s %s" % (self.blog_id.id, self.user_id.id)
+        return "%s %s" % (self.blog_id, self.user_id)

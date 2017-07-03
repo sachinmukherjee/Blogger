@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Saved</title>
 </head>
 <body>
-
+<h4>Saved</h4>
+{% for save in Saved %}
+<h2>{{save.blog_id.title}}</h2>
+<p>{{save.blog_id.content}}</p>
+{% endfor %}
 </body>
 </html>

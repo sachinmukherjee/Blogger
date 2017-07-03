@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^logout/$', views.logout),
     url(r'^profile/$', views.profile, name="profile"),
     url(r'^saved/$', views.saved, name="saved"),
+    url(r'^readlater/$', views.readlater, name="readlater"),
 
 
 
