@@ -119,9 +119,12 @@ def addContent(request):
 
 
 def logout(request):
-    del request.session["login_user"]
-    del request.session["blog_user"]
-    return HttpResponseRedirect("/home/")
+    if request.session["login_user"]:
+        del request.session["login_user"]
+        del request.session["blog_user"]
+        return HttpResponseRedirect("/home/")
+    else:
+        return HttpResponseRedirect("/login/")
 
 
 def profile(request):

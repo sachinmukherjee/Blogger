@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Read Later</title>
+</head>
+<body>
+<h4>Read Later</h4>
+{% for read in Read %}
+<h3>{{read.blog_id.title}}</h3>
+<p>{{read.blog_id.content}}</p>
+<br>
+{% endfor %}
+</body>
+</html>
