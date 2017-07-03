@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render_to_response
-from .models import Blogs, Login, User
+from .models import Blogs, Login, User, Saved, ReadLater
 
 
 @csrf_exempt
@@ -121,3 +121,25 @@ def addContent(request):
 def logout(request):
     del request.session["login_user"]
     del request.session["blog_user"]
+    return HttpResponseRedirect("/home/")
+
+
+def profile(request):
+    if request.session["login_user"]:
+        user = request.session["login_user"]
+        log = Login.objects.get(pk=user)
+        usr = User.objects.get(login_id=log)
+        return render_to_response("profile.html", {"User": usr})
+    else:
+        return HttpResponseRedirect("/login/")
+
+
+def saved(request):
+    if request.session["login_user"]:
+        user = request.session["login_user"]
+        log = Login.objects.get(pk=user)
+        usr = User.objects.get(login_id=log)
+        save = Saved.objects.get(user_id=usr)
+        return render_to_response("saved.html", {"Saved": save})
+    else:
+        return HttpResponseRedirect("/login/")

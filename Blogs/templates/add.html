@@ -1,1 +1,22 @@
 <html>
+<head>
+    <title></title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Blogs/add.css' %}">
+</head>
+<div id="wrap">
+    <h2>Blogger</h2>
+		  <ul class="navbar">
+			 <li><a href="/home/">Home</a></li>
+			 <li><a href="/publish/">Publish</a></li>
+			 <li><a href="/profile/">Profile</a></li>
+			 <li><a href="#">My Contents</a>
+				<ul>
+				   <li><a href="/readlater/">Read Later</a></li>
+				   <li><a href="/saved/">Saved</a></li>
+				</ul>
+			 </li>
+			 <li><a href="/logout/">Logout</a></li>
+          </ul>
+</div>
+</html>

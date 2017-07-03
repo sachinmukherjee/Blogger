@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from Blogs import views
 
@@ -17,6 +17,8 @@ urlpatterns = [
     url(r'^publish/$', views.publish),
     url(r'^publish/addContent/', views.addContent),
     url(r'^logout/$', views.logout),
+    url(r'^profile/$', views.profile, name="profile"),
+    url(r'^saved/$', views.saved, name="saved"),
 
 
 

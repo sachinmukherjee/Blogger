@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 import datetime
+from tinymce.models import HTMLField
 
 
 class Login(models.Model):
@@ -28,7 +29,7 @@ class User(models.Model):
 
 class Blogs(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField(max_length=10000)
+    content = models.TextField()
     date = models.DateField("DATE", default=datetime.date.today)
     username = models.ForeignKey(User)
 

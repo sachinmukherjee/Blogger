@@ -1,11 +1,11 @@
 <html>
 <head>
   <title>Blogger</title>
-  {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'Blogs/home.css' %}">
+
 </head>
 
 <body>
+{% include 'add.html' %}
 <div class="home">
   {% for all in blogs %}
     <a href="/home/{{all.id}}/">{{all.title}}</a>
