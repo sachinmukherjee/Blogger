@@ -1,22 +1,46 @@
 <html>
 <head>
-    <title></title>
-    {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'Blogs/add.css' %}">
+	<title>
+
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional Bootstrap theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
-<div id="wrap">
-    <h2>Blogger</h2>
-		  <ul class="navbar">
-			 <li><a href="/home/">Home</a></li>
-			 <li><a href="/publish/">Publish</a></li>
-			 <li><a href="/profile/">Profile</a></li>
-			 <li><a href="#">My Contents</a>
-				<ul>
-				   <li><a href="/readlater/">Read Later</a></li>
-				   <li><a href="/saved/">Saved</a></li>
-				</ul>
-			 </li>
-			 <li><a href="/logout/">Logout</a></li>
-          </ul>
+
+<body>
+<div class=" navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/home/" class="navbar-brand">Blogger</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right navbar-fixed">
+            <li class="active"><a href="/home/">Home</a> </li>
+            <li><a href="/publish/">Publish <span class="glyphicon glyphicon-pencil"></span> </a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/profile/view/">View</a></li>
+                    <li><a href="/profile/saved/">Saved</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Content <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="'/saved/">Saved <span class="badge">10</span> </a></li>
+                    <li><a href="'/readlater/">Read Later <span class="badge">12</span> </a></li>
+                </ul>
+
+            </li>
+            <li><a href="/login/">Login</a></li>
+            <li><a href="/register/">Register</a></li>
+            <li><a href ="/logout/">Logout</a></li>
+        </ul>
+
+    </div>
 </div>
+</body>
 </html>

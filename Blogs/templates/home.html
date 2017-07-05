@@ -8,7 +8,7 @@
 {% include 'add.html' %}
 <div class="home">
   {% for all in blogs %}
-    <a href="/home/{{all.id}}/">{{all.title}}</a>
+    <a style="text-decoration:none;" href="/home/{{all.id}}/">{{all.title}}</a>
     <p class="content">{{all.content}}</p>
     <p>Publish Date: {{all.date}}</p>
   {% endfor %}
