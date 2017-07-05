@@ -99,10 +99,13 @@ def detailProcessing(request):
 
 
 def publish(request):
-    if request.session["blog_user"]:
-        return render_to_response('publish.html')
+    if request.session["login_user"]:
+        if request.session["blog_user"]:
+            return render_to_response("publish.html", {})
+        else:
+            return HttpResponseRedirect("/register/addUser/")
     else:
-        return HttpResponseRedirect('/register/addUser/')
+        return HttpResponseRedirect("/login/")
 
 
 def addContent(request):
@@ -123,13 +126,11 @@ def addContent(request):
 
 def logout(request):
     if request.session["login_user"] or request.session["blog_user"]:
-        try:
-            del request.session["login_user"]
-            del request.session["blog_user"]
-        except KeyError:
-            return HttpResponseRedirect("/home/")
+        request.session["login_user"] = False
+        request.session["blog_user"] = False
+        return HttpResponseRedirect("/home/")
     else:
-        return HttpResponseRedirect("/login/")
+        return HttpResponseRedirect("/home/")
 
 
 def profile(request):

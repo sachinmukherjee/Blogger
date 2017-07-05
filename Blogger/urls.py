@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^publish/$', views.publish),
     url(r'^publish/addContent/', views.addContent),
     url(r'^logout/$', views.logout),
-    url(r'^profile/$', views.profile, name="profile"),
+    url(r'^profile/view/$', views.profile, name="profile"),
     url(r'^saved/$', views.saved, name="saved"),
     url(r'^readlater/$', views.readlater, name="readlater"),
 
