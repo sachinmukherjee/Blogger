@@ -1,16 +1,23 @@
 <html>
 <head>
     <title>{{individual.title}}</title>
-    {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'Blogs/individual.css' %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional Bootstrap theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
-<div class="individual">
-  <h3>{{individual.title}}</h3>
-  <p class="content">{{individual.content}}</p>
-  <p class="date">Date : {{individual.date}}</p>
-  <p class="author">Created by: {{individual.username.fullname}} </p>
+<div class="container">
+    <blockquote>
+    <h3 style="color:black;">{{individual.title}}</h3>
+    <p>{{individual.content}}</p>
+    <footer>Date : {{individual.date}}</footer>
+    <footer>Written by : {{individual.username.fullname}} </footer>
+    </blockquote>
 </div>
 </body>
 </html>

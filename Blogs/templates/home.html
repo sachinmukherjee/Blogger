@@ -6,11 +6,12 @@
 
 <body>
 {% include 'add.html' %}
-<div class="home">
+<div class="container">
   {% for all in blogs %}
+  <blockquote>
     <a style="text-decoration:none;" href="/home/{{all.id}}/">{{all.title}}</a>
     <p class="content">{{all.content}}</p>
-    <p>Publish Date: {{all.date}}</p>
+    <footer>Publish Date: {{all.date}}</footer>
   {% endfor %}
 </div>
 </body>

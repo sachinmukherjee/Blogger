@@ -20,16 +20,19 @@ def login(request):
 
 @csrf_exempt
 def loginValidation(request):
-    email = request.POST.get('email')
-    log = Login.objects.filter(email=email).first()
-    if log:
-        user = Login.objects.get(email=email)
-        request.session["login_user"] = user.pk
-        user1 = User.objects.get(login_id=user)
-        request.session['blog_user'] = user1.pk
-        return HttpResponseRedirect("/home/")
+    if request.POST.get('login') and request.POST.get("password") and request.POST.get("email"):
+        email = request.POST.get('email')
+        log = Login.objects.filter(email=email).first()
+        if log:
+            user = Login.objects.get(email=email)
+            request.session["login_user"] = user.pk
+            user1 = User.objects.get(login_id=user)
+            request.session['blog_user'] = user1.pk
+            return HttpResponseRedirect("/home/")
+        else:
+            return HttpResponseRedirect('/register/')
     else:
-        return HttpResponseRedirect('/register/')
+        return HttpResponseRedirect("/login/")
 
 
 @csrf_exempt
