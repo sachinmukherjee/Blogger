@@ -102,7 +102,7 @@ def publish(request):
     if request.session["blog_user"]:
         return render_to_response('publish.html')
     else:
-        return HttpResponseRedirect('/login/')
+        return HttpResponseRedirect('/register/addUser/')
 
 
 def addContent(request):
@@ -122,10 +122,12 @@ def addContent(request):
 
 
 def logout(request):
-    if request.session["login_user"]:
-        del request.session["login_user"]
-        del request.session["blog_user"]
-        return HttpResponseRedirect("/home/")
+    if request.session["login_user"] or request.session["blog_user"]:
+        try:
+            del request.session["login_user"]
+            del request.session["blog_user"]
+        except KeyError:
+            return HttpResponseRedirect("/home/")
     else:
         return HttpResponseRedirect("/login/")
 
@@ -149,6 +151,7 @@ def saved(request):
         return render_to_response("saved.html", {"Saved": save})
     else:
         return HttpResponseRedirect("/login/")
+
 
 def readlater(request):
     if request.session["login_user"]:
