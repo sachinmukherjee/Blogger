@@ -16,7 +16,7 @@
     <h3 style="color:black;">{{individual.title}}</h3>
     <p>{{individual.content}}</p>
     <footer>Date : {{individual.date}}</footer>
-    <footer>Written by : {{individual.username.fullname}} </footer>
+    <footer>Author: {{individual.username.fullname}} </footer>
         <br>
         <br>
         <form class="form-default" role="form" action="/home/save/" method="post" { %csrf_token% }>

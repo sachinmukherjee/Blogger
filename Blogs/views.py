@@ -162,7 +162,7 @@ def saved(request):
         user = request.session["login_user"]
         log = Login.objects.get(pk=user)
         usr = User.objects.get(login_id=log)
-        save = Saved.objects.get(user_id=usr)
+        save = Saved.objects.filter(user_id=usr)
         return render_to_response("saved.html", {"Saved": save})
     else:
         return HttpResponseRedirect("/login/")
@@ -173,7 +173,7 @@ def readlater(request):
         user = request.session["login_user"]
         log = Login.objects.get(pk=user)
         usr = User.objects.get(login_id=log)
-        readlater = ReadLater.objects.get(user_id=usr)
+        readlater = ReadLater.objects.filter(user_id=usr)
         return render_to_response("readlater.html", {"Read": readlater})
     else:
         return HttpResponseRedirect("/login/")
@@ -186,7 +186,7 @@ def read(request):
         try:
             ReadLater.objects.get(blog_id=blog)
             return HttpResponseRedirect("/home/")
-        except DoesNotExist:
+        except(NameError, Exception):
             log = Login.objects.get(pk=request.session["login_user"])
             user = User.objects.get(login_id=log)
             reads = ReadLater()
@@ -204,7 +204,7 @@ def save(request):
     try:
         Saved.objects.get(blog_id=blog)
         return HttpResponseRedirect("/home/")
-    except DoesNotExist:
+    except(NameError, Exception):
         log = Login.objects.get(pk=request.session["login_user"])
         user = User.objects.get(login_id=log)
         sav = Saved()

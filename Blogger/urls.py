@@ -19,7 +19,7 @@ urlpatterns = [
     url(r'^logout/$', views.logout),
     url(r'^profile/view/$', views.profile, name="profile"),
     url(r'^saved/$', views.saved, name="saved"),
-    url(r'^home/(?P<blogs_id>[0-9]+)/save/', views.save),
+    url(r'^home/save/$', views.save),
     url(r'^readlater/$', views.readlater, name="readlater"),
     url(r'^home/read/$', views.read),
 
