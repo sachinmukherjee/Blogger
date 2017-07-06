@@ -19,7 +19,7 @@
     <footer>Written by : {{individual.username.fullname}} </footer>
         <br>
         <br>
-        <form class="form-default" role="form" action="." method="post">
+        <form class="form-default" role="form" action="/home/save/" method="post" { %csrf_token% }>
           <div class="form-group">
              <button type="submit" class="form-control .btn btn-success" value="{{individual.id}}" name="submit" style=" width:5cm;">Save</button>
           </div>

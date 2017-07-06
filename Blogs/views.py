@@ -10,8 +10,14 @@ from .models import Blogs, Login, User, Saved, ReadLater
 @csrf_exempt
 def home(request):
     blog = Blogs.objects.all().order_by('-date')
-    readlater = ReadLater.objects.all().count()
-    return render_to_response('home.html', {'blogs': blog, 'readlater': readlater})
+    if request.session["login_user"]:
+        log = Login.objects.get(pk=request.session["login_user"])
+        user = User.objects.get(login_id=log)
+        readlater = ReadLater.objects.filter(user_id=user).count()
+        saved = Saved.objects.filter(user_id=user).count()
+        return render_to_response('home.html', {'blogs': blog, 'readlater': readlater, 'save': saved})
+    else:
+        return render_to_response('home.html', {'blogs': blog, 'readlater': 0, 'save': 0})
 
 
 @csrf_exempt
@@ -43,7 +49,8 @@ def register(request):
 
 @csrf_exempt
 def addUser(request):
-    if request.POST.get('submit'):
+    if request.POST.get('submit') and request.POST.get('email') and request.POST.get('password') and request.POST.get(
+            'password2'):
         password1 = request.POST.get('password')
         password2 = request.POST.get('password2')
         if password1 == password2:
@@ -63,8 +70,14 @@ def addUser(request):
 
 @csrf_exempt
 def blogs(request, blogs_id):
-    blog = Blogs.objects.get(pk=blogs_id)
-    return render_to_response('individualblog.html', {'individual': blog})
+    try:
+        if request.session["login_user"]:
+            blog = Blogs.objects.get(pk=blogs_id)
+            return render_to_response('individualblog.html', {'individual': blog})
+        else:
+            return HttpResponseRedirect("/login/")
+    except KeyError:
+        return HttpResponseRedirect("/login/")
 
 
 @csrf_exempt
@@ -165,7 +178,7 @@ def readlater(request):
     else:
         return HttpResponseRedirect("/login/")
 
-
+@csrf_exempt
 def read(request):
     if request.session["login_user"]:
         value = request.POST.get("submit")
@@ -173,7 +186,7 @@ def read(request):
         try:
             ReadLater.objects.get(blog_id=blog)
             return HttpResponseRedirect("/home/")
-        except Exception:
+        except DoesNotExist:
             log = Login.objects.get(pk=request.session["login_user"])
             user = User.objects.get(login_id=log)
             reads = ReadLater()
@@ -183,3 +196,19 @@ def read(request):
             return HttpResponseRedirect("/home/")
     else:
         return HttpResponseRedirect("/login/")
+
+@csrf_exempt
+def save(request):
+    value = request.POST.get("submit")
+    blog = Blogs.objects.get(pk=value)
+    try:
+        Saved.objects.get(blog_id=blog)
+        return HttpResponseRedirect("/home/")
+    except DoesNotExist:
+        log = Login.objects.get(pk=request.session["login_user"])
+        user = User.objects.get(login_id=log)
+        sav = Saved()
+        sav.blog_id = blog
+        sav.user_id = user
+        sav.save()
+        return HttpResponseRedirect("/home/")

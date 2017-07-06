@@ -9,15 +9,15 @@
 <div class="container">
   <blockquote>
   {% for all in blogs %}
-    <a style="text-decoration:none;" href="/home/{{all.id}}/">{{all.title}}</a>
-    <p class="content">{{all.content}}</p>
-    <footer>Publish Date: {{all.date}}</footer>
-    <br><br>
-    <form class="form-default" role="form" action="." method="post">
-    <div class="form-group">
-      <button type="submit" class="form-control .btn btn-primary" value="{{all.id}}" name="submit" style=" width:5cm;">Read Later</button>
-    </div>
-  </form>
+      <strong><a style="text-decoration:none; font-weight:bolder;" href="/home/{{all.id}}/">{{all.title}}</a></strong>
+      <p class="content">{{all.content}}</p>
+      <footer>Publish Date: {{all.date}}</footer>
+      <br><br>
+      <form class="form-default" role="form" action="/home/read/" method="post" { %csrf_token% }>
+       <div class="form-group">
+         <button type="submit" class="form-control .btn btn-info" value="{{all.id}}" name="submit" style=" width:5cm;">Read Later</button>
+       </div>
+      </form>
   {% endfor %}
   </blockquote>
 
