@@ -31,6 +31,10 @@
     <div class="form-group" style="width:15cm;position:relative; left:10cm;top:3cm;">
     <button type="submit" name="submit" value="'submit" class="form-control .btn btn-success">Submit</button>
     </div>
+
+     {% if status %}
+    <p class="text-danger">{{status}}</p>
+    {% endif %}
 </form>
 </body>
 </html>

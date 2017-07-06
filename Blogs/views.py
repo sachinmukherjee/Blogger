@@ -10,14 +10,18 @@ from .models import Blogs, Login, User, Saved, ReadLater
 @csrf_exempt
 def home(request):
     blog = Blogs.objects.all().order_by('-date')
-    if request.session["login_user"]:
-        log = Login.objects.get(pk=request.session["login_user"])
-        user = User.objects.get(login_id=log)
-        readlater = ReadLater.objects.filter(user_id=user).count()
-        saved = Saved.objects.filter(user_id=user).count()
-        return render_to_response('home.html', {'blogs': blog, 'readlater': readlater, 'save': saved})
-    else:
+    try:
+        if request.session["login_user"]:
+            log = Login.objects.get(pk=request.session["login_user"])
+            user = User.objects.get(login_id=log)
+            readlater = ReadLater.objects.filter(user_id=user).count()
+            saved = Saved.objects.filter(user_id=user).count()
+            return render_to_response('home.html', {'blogs': blog, 'readlater': readlater, 'save': saved})
+        else:
+            return render_to_response('home.html', {'blogs': blog, 'readlater': 0, 'save': 0})
+    except KeyError:
         return render_to_response('home.html', {'blogs': blog, 'readlater': 0, 'save': 0})
+
 
 
 @csrf_exempt
@@ -37,9 +41,9 @@ def loginValidation(request):
             request.session['blog_user'] = user1.pk
             return HttpResponseRedirect("/home/")
         else:
-            return HttpResponseRedirect('/register/')
+            return HttpResponseRedirect('/register/', {'status': "You have no account please register first"})
     else:
-        return HttpResponseRedirect("/login/")
+        return HttpResponseRedirect("/login/", {'status': "Please fill all the entries"})
 
 
 @csrf_exempt
@@ -63,9 +67,9 @@ def addUser(request):
             request.session["login_user"] = foreign.pk
             return HttpResponseRedirect('/details/')
         else:
-            return HttpResponseRedirect('/register/')
+            return HttpResponseRedirect('/register/', {'status': "Password didn't match"})
     else:
-        return HttpResponseRedirect('/home/')
+        return HttpResponseRedirect('/home/', {'status': "Please fill all the entries"})
 
 
 @csrf_exempt

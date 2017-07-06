@@ -53,6 +53,10 @@
 
     <button type="submit" name="submit" value="submit" class="form-control .btn btn-success">Submit</button >
     </div>
+
+    {% if status %}
+    <p class="text-danger">{{status}}</p>
+    {% endif %}
 </form>
 
 </body>

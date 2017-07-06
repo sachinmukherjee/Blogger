@@ -33,7 +33,9 @@
         <button type="submit" name="login" value="submit" class="form-control .btn btn-success">Let Me In</button>
     </div>
 
-    </div>
+    {% if status %}
+    <p class="text-danger">{{status}}</p>
+    {% endif %}
 
 </form>
 
