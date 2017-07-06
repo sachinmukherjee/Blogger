@@ -9,8 +9,9 @@ from .models import Blogs, Login, User, Saved, ReadLater
 
 @csrf_exempt
 def home(request):
-    blog = Blogs.objects.all().order_by('date')
-    return render_to_response('home.html', {'blogs': blog})
+    blog = Blogs.objects.all().order_by('-date')
+    readlater = ReadLater.objects.all().count()
+    return render_to_response('home.html', {'blogs': blog, 'readlater': readlater})
 
 
 @csrf_exempt
@@ -109,7 +110,7 @@ def publish(request):
 
 
 def addContent(request):
-    if request.GET.get("submit"):
+    if request.GET.get("submit") == "submit":
         title = request.GET.get("title")
         content = request.GET.get("content")
         usr = request.session["blog_user"]
@@ -161,5 +162,24 @@ def readlater(request):
         usr = User.objects.get(login_id=log)
         readlater = ReadLater.objects.get(user_id=usr)
         return render_to_response("readlater.html", {"Read": readlater})
+    else:
+        return HttpResponseRedirect("/login/")
+
+
+def read(request):
+    if request.session["login_user"]:
+        value = request.POST.get("submit")
+        blog = Blogs.objects.get(pk=value)
+        try:
+            ReadLater.objects.get(blog_id=blog)
+            return HttpResponseRedirect("/home/")
+        except Exception:
+            log = Login.objects.get(pk=request.session["login_user"])
+            user = User.objects.get(login_id=log)
+            reads = ReadLater()
+            reads.blog_id = blog
+            reads.user_id = user
+            reads.save()
+            return HttpResponseRedirect("/home/")
     else:
         return HttpResponseRedirect("/login/")

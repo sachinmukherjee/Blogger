@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^profile/view/$', views.profile, name="profile"),
     url(r'^saved/$', views.saved, name="saved"),
     url(r'^readlater/$', views.readlater, name="readlater"),
+    url(r'^home/read/', views.read),
 
 
 
